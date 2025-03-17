@@ -1,3 +1,4 @@
+from tabnanny import check
 from django.contrib.auth import get_user_model
 from django.db import models
 
@@ -92,7 +93,11 @@ class Follow(models.Model):
             models.UniqueConstraint(
                 name='unique_user_following',
                 fields=['user', 'following']
-            )
+            ),
+            models.CheckConstraint(
+                name='prevent_self_follow',
+                check=~models.Q(user=models.F('following')),
+            ),
         ]
 
     def __str__(self):

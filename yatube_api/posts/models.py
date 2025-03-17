@@ -53,6 +53,7 @@ class Post(AbstractText):
     class Meta:
         verbose_name = 'пост'
         verbose_name_plural = 'Посты'
+        ordering = ['-pub_date']
 
 
 class Comment(AbstractText):
@@ -71,6 +72,7 @@ class Comment(AbstractText):
     class Meta:
         verbose_name = 'комментарий'
         verbose_name_plural = 'Комментарии'
+        ordering = ['-created']
 
 
 class Follow(models.Model):
@@ -86,6 +88,16 @@ class Follow(models.Model):
     class Meta:
         verbose_name = 'Подписка'
         verbose_name_plural = 'Подписки'
+        constraints = [
+            models.CheckConstraint(
+                name='prevent_self_follow',
+                condition=~models.Q(user=models.F('following')),
+            ),
+            models.UniqueConstraint(
+                name='unique_user_following',
+                fields=['user', 'following']
+            )
+        ]
 
     def __str__(self):
         return f'{self.user} подписан на {self.following}'

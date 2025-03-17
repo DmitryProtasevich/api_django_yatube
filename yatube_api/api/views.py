@@ -1,5 +1,4 @@
 from django.shortcuts import get_object_or_404
-
 from rest_framework import filters, mixins, viewsets
 from rest_framework.permissions import (
     IsAuthenticated,
@@ -41,6 +40,7 @@ class GroupsViewSet(viewsets.ReadOnlyModelViewSet):
 class CommentsViewSet(viewsets.ModelViewSet):
     serializer_class = CommentsSerializer
     permission_classes = (IsAuthenticatedOrReadOnly, IsAuthorOrReadOnly)
+    pagination_class = LimitOffsetPagination
 
     def get_post(self):
         return get_object_or_404(Post, pk=self.kwargs.get('post_id'))
@@ -54,7 +54,7 @@ class CommentsViewSet(viewsets.ModelViewSet):
 
 class FollowViewSet(CreateReadViewSet):
     serializer_class = FollowSerializer
-    permission_classes = (IsAuthenticated, IsAuthorOrReadOnly)
+    permission_classes = (IsAuthenticated, )
     filter_backends = (filters.SearchFilter,)
     search_fields = ('^following__username',)
 

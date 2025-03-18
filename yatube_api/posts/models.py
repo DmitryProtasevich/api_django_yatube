@@ -53,7 +53,7 @@ class Post(AbstractText):
     class Meta:
         verbose_name = 'пост'
         verbose_name_plural = 'Посты'
-        ordering = ['-pub_date']
+        ordering = ('-pub_date',)
 
 
 class Comment(AbstractText):
@@ -72,7 +72,7 @@ class Comment(AbstractText):
     class Meta:
         verbose_name = 'комментарий'
         verbose_name_plural = 'Комментарии'
-        ordering = ['-created']
+        ordering = ('-created',)
 
 
 class Follow(models.Model):

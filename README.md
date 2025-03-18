@@ -117,6 +117,6 @@ GET /v1/posts/
 ```
 
 ### АВТОР
-
-Дмитрий Протасевич
-https://github.com/DmitryProtasevich
+Дмитрий Протасевич  
+GitHub: https://github.com/DmitryProtasevich  
+Telegram: https://t.me/DmitryProtasevich/  

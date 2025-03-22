@@ -1,4 +1,4 @@
-# API Final Yatube
+# API Django Yatube
 ### ОПИСАНИЕ
 API для Yatube — это backend-часть социальной сети, разработанная с использованием Django и Django REST Framework. Проект предоставляет API, которое позволяет управлять контентом и взаимодействием между пользователями. Основная цель проекта — создать удобный инструмент для разработчиков, которые хотят интегрировать функциональность проекта в свои приложения или расширять его возможности.
 
@@ -55,10 +55,10 @@ Djoser 2.1.0.
 
 Клонировать репозиторий и перейти в него в командной строке:
 ```bash
-git clone https://github.com/DmitryProtasevich/api_final_yatube.git
+git clone https://github.com/DmitryProtasevich/api_django_yatube.git
 ```
 ```bash
-cd api_final_yatube
+cd api_django_yatube
 ```
 Cоздать и активировать виртуальное окружение:
 ```bash
